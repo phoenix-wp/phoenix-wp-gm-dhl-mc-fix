@@ -38,7 +38,8 @@ Requires German Market (DHL add-on) and WCML — **not included**.
 ```powershell
 cd phoenix-wp-bridge-german-market-wcml
 composer install   # optional; includes/autoload-fallback.php works without vendor/
-.\scripts\build-release.ps1
+.\scripts\build-release.ps1              # wp.org / GitHub (mit docs/)
+.\scripts\build-release.ps1 -Deploy      # Live-Shop — ohne docs/
 ```
 
 ## wp.org
