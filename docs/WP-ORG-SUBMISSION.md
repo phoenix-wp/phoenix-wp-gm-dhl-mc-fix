@@ -77,6 +77,22 @@ Banner: **PhoenixWP Fix** · German Market DHL + WCML · Multi-Currency - DHL Ad
 
 ---
 
+## Plugin add form (wordpress.org/plugins/developers/add/)
+
+Use when the wp.org account is approved (same account as Gift):
+
+| Field | Value |
+|-------|-------|
+| **Plugin name** | PhoenixWP Fix — German Market DHL & WCML |
+| **Plugin slug** | `phoenix-wp-bridge-german-market-wcml` |
+| **Short description** | WCML multi-currency compatibility fix and German Market DHL international address fix. Requires German Market DHL + WCML (not included). |
+| **Plugin URL** | https://github.com/phoenix-wp/phoenix-wp-bridge-german-market-wcml |
+| **Notes for reviewer** | Compatibility fix only — not a fork of German Market or WCML. Requires both commercial plugins. No external calls, no telemetry. Tested with GM DHL 3.58.x, WCML multi-currency, WooCommerce HPOS. |
+
+After approval email: run `.\scripts\wp-org-svn-deploy.ps1 -Version 1.0.0`, review, commit.
+
+---
+
 ## SVN workflow
 
 1. Reserve slug at https://wordpress.org/plugins/developers/add/

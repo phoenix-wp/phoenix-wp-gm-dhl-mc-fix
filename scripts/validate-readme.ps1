@@ -64,7 +64,7 @@ Write-Host "readme.txt validation: $readmePath"
 Write-Host ''
 
 if ($errors.Count -eq 0) {
-	Write-Host 'PASS — no blocking issues found.' -ForegroundColor Green
+	Write-Host 'PASS - no blocking issues found.' -ForegroundColor Green
 } else {
 	Write-Host 'FAIL — fix before submit:' -ForegroundColor Red
 	$errors | ForEach-Object { Write-Host "  - $_" -ForegroundColor Red }

@@ -19,10 +19,15 @@ $zipPath = Join-Path $root "dist/$Slug-$Version.zip"
 $svnUrl = "https://plugins.svn.wordpress.org/$Slug"
 $workDir = Join-Path $root ".svn-wp-org"
 
-Write-Host "PhoenixWP Fix — wp.org SVN deploy ($Slug $Version)"
+Write-Host "PhoenixWP Fix - wp.org SVN deploy ($Slug $Version)"
 
 & $validateScript
-& $buildScript -Version $Version
+
+if ($DryRun -and (Test-Path $zipPath)) {
+	Write-Host "[DryRun] Using existing ZIP: $zipPath"
+} else {
+	& $buildScript -Version $Version
+}
 
 if (-not (Test-Path $zipPath)) {
 	throw "Release ZIP not found: $zipPath"
@@ -41,15 +46,15 @@ foreach ($asset in $requiredAssets) {
 	}
 }
 
-if (-not (Get-Command svn -ErrorAction SilentlyContinue)) {
-	throw 'Subversion (svn) not found in PATH. Install TortoiseSVN CLI or svn package.'
-}
-
 if ($DryRun) {
 	Write-Host '[DryRun] Would checkout, copy trunk, assets, tag, and svn commit.'
 	Write-Host "  SVN: $svnUrl"
 	Write-Host "  ZIP: $zipPath"
 	exit 0
+}
+
+if (-not (Get-Command svn -ErrorAction SilentlyContinue)) {
+	throw 'Subversion (svn) not found in PATH. Install TortoiseSVN CLI or svn package.'
 }
 
 if (Test-Path $workDir) {
