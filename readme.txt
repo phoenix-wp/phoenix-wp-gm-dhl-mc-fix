@@ -1,11 +1,12 @@
-=== Phoenix German Market DHL WCML Fix for WooCommerce ===
+=== Phoenix German Market DHL Multi-Currency Fix for WooCommerce ===
 Contributors: phoenixwp
+Donate link: https://phoenixwp.com/preise/
 Tags: woocommerce, german-market, wpml, wcml, shipping
 Requires at least: 6.7
 Tested up to: 7.0
 Requires PHP: 8.2
 WC requires at least: 8.0
-WC tested up to: 10.8.1
+WC tested up to: 10.9.1
 Stable tag: 1.0.0
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -43,7 +44,7 @@ German Market splits address line 1 using a Germany-style pattern (street before
 
 Works with **any WCML currency** and **any shipping zone** where these methods are configured. Languages are not relevant — only currency and address format matter.
 
-**German description:** see `docs/DESCRIPTION-de.md` in the plugin folder or [phoenixwp.com/support](https://phoenixwp.com/support/).
+**German description:** [phoenixwp.com/support](https://phoenixwp.com/support/) (DE product copy).
 
 = Settings =
 
@@ -62,7 +63,7 @@ Documentation: https://phoenixwp.com/support/
 == Installation ==
 
 1. Install and activate **WooCommerce**, **German Market** (with DHL), and **WCML** multi-currency first.
-2. Upload this plugin to `/wp-content/plugins/phoenix-german-market-dhl-wcml-fix-for-woocommerce/` or install from the WordPress plugin directory.
+2. Upload this plugin to `/wp-content/plugins/phoenix-german-market-dhl-multi-currency-fix-for-woocommerce/` or install from the WordPress plugin directory.
 3. Activate through the **Plugins** menu.
 4. Open **WooCommerce → GM DHL WCML Fix** and confirm the feature toggles are enabled.
 5. Test checkout in a secondary currency (for example PLN or CHF) with a cart below and above your free-shipping threshold.
@@ -99,11 +100,11 @@ No. This plugin is **100% free** (GPL).
 
 = Is the admin interface translated? =
 
-The plugin ships in **English only**. All strings use the `phoenix-german-market-dhl-wcml-fix-for-woocommerce` text domain and `loco.xml` for [Loco Translate](https://wordpress.org/plugins/loco-translate/). You can add your own `.po` files under `languages/` without waiting for an official language pack.
+The plugin UI is **English by default**. A **German (de_DE)** language pack is included for the DACH market. Other locales: use [Loco Translate](https://wordpress.org/plugins/loco-translate/) (`loco.xml`) or [GlotPress](https://translate.wordpress.org) after listing.
 
-= Gibt es eine deutsche Beschreibung? =
+= Is there a German description? =
 
-Ja — siehe `docs/DESCRIPTION-de.md` im Plugin oder den Support-Bereich auf [phoenixwp.com](https://phoenixwp.com/support/). Die WordPress-Admin-Oberfläche bleibt Englisch (Loco optional).
+Yes — on [phoenixwp.com/support](https://phoenixwp.com/support/). With WordPress set to Deutsch, the admin settings page uses the bundled de_DE translations.
 
 == Screenshots ==
 
@@ -117,7 +118,8 @@ Ja — siehe `docs/DESCRIPTION-de.md` im Plugin oder den Support-Bereich auf [ph
 * WCML conversion for DHL free-shipping and minimum thresholds (German Market DHL).
 * WCML conversion for DHL flat shipping costs.
 * International address parsing fix for DHL label API (checkout + `wgm_shipping_dhl_build_address_from_order`).
-* HPOS compatible. Tested with WooCommerce 8.0+ and German Market DHL 3.58.x.
+* Bundled German (de_DE) admin translations for DACH shops.
+* HPOS compatible. Tested with WordPress 7.0 and WooCommerce 10.9.1 (German Market DHL 3.58.x).
 
 == Upgrade Notice ==
 

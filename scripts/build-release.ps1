@@ -8,7 +8,7 @@ param(
 
 $ErrorActionPreference = 'Stop'
 $root = Split-Path -Parent $PSScriptRoot
-$pluginSlug = 'phoenix-german-market-dhl-wcml-fix-for-woocommerce'
+$pluginSlug = 'phoenix-german-market-dhl-multi-currency-fix-for-woocommerce'
 $coreHelpers = Join-Path (Split-Path -Parent $root) 'phoenix-wp-core\scripts\wp-org-release-helpers.ps1'
 if (-not (Test-Path $coreHelpers)) {
 	throw "Missing shared helpers: $coreHelpers"
@@ -40,8 +40,15 @@ if (-not (Test-Path $distDir)) {
 }
 
 Copy-PhoenixPluginToStage -Root $root -StageDir $stageDir -ExcludeNames (Get-PhoenixWpOrgStageExcludeNames -Extra $extraExcludes)
+Remove-PhoenixWpOrgStageArtifacts -StageDir $stageDir
+$languagesReadme = Join-Path $stageDir 'languages\README.md'
+if (Test-Path $languagesReadme) {
+	Remove-Item -Force $languagesReadme
+}
 New-PhoenixPluginReleaseZip -StageDir $stageDir -PluginSlug $pluginSlug -ZipPath $zipPath
 Test-PhoenixPluginReleaseZip -ZipPath $zipPath -PluginSlug $pluginSlug -RequireDistinctUris
+Test-PhoenixWpOrgZipUnexpectedArtifacts -ZipPath $zipPath -PluginSlug $pluginSlug
+Test-PhoenixWpOrgZipPhpNoBom -ZipPath $zipPath -PluginSlug $pluginSlug
 
 $suffix = if ($Deploy) { ' (deploy)' } else { '' }
 Write-Host "Built $zipPath$suffix (tar paths for wp.org)"

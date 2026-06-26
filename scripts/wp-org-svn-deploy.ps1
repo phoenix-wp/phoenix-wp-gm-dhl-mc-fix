@@ -7,7 +7,7 @@
 
 param(
 	[string]$Version = '1.0.0',
-	[string]$Slug = 'phoenix-german-market-dhl-wcml-fix-for-woocommerce',
+	[string]$Slug = 'phoenix-german-market-dhl-multi-currency-fix-for-woocommerce',
 	[switch]$DryRun
 )
 

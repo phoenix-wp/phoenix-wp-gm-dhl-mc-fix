@@ -2,12 +2,12 @@
 /**
  * Plugin activation lifecycle.
  *
- * @package PhoenixWP\BridgeGermanMarketWcml
+ * @package PhoenixWP\GmDhlMcFix
  */
 
 declare(strict_types=1);
 
-namespace PhoenixWP\BridgeGermanMarketWcml;
+namespace PhoenixWP\GmDhlMcFix;
 
 defined( 'ABSPATH' ) || exit;
 
@@ -19,12 +19,14 @@ final class Install {
 	public const MIN_WP  = '6.7';
 	public const MIN_PHP = '8.2';
 
+	private const LEGACY_OPTION_KEY = 'phoenix_wp_bridge_gm_wcml_settings';
+
 	/**
 	 * Registers lifecycle hooks.
 	 */
 	public static function register_hooks(): void {
-		register_activation_hook( PHOENIX_GERMAN_MARKET_DHL_WCML_FIX_FOR_WOOCOMMERCE_FILE, array( self::class, 'activate' ) );
-		register_deactivation_hook( PHOENIX_GERMAN_MARKET_DHL_WCML_FIX_FOR_WOOCOMMERCE_FILE, array( self::class, 'deactivate' ) );
+		register_activation_hook( PHOENIX_GM_DHL_MC_FIX_FILE, array( self::class, 'activate' ) );
+		register_deactivation_hook( PHOENIX_GM_DHL_MC_FIX_FILE, array( self::class, 'deactivate' ) );
 	}
 
 	/**
@@ -32,13 +34,15 @@ final class Install {
 	 */
 	public static function activate(): void {
 		if ( ! self::requirements_met() ) {
-			deactivate_plugins( PHOENIX_GERMAN_MARKET_DHL_WCML_FIX_FOR_WOOCOMMERCE_BASENAME );
+			deactivate_plugins( PHOENIX_GM_DHL_MC_FIX_BASENAME );
 			wp_die(
-				esc_html__( 'PhoenixWP Fix — German Market DHL & WCML requires WordPress 6.7+, PHP 8.2+, and WooCommerce.', 'phoenix-german-market-dhl-wcml-fix-for-woocommerce' ),
-				esc_html__( 'Plugin Activation Error', 'phoenix-german-market-dhl-wcml-fix-for-woocommerce' ),
+				esc_html__( 'PhoenixWP Fix — German Market DHL & WCML requires WordPress 6.7+, PHP 8.2+, and WooCommerce.', 'phoenix-german-market-dhl-multi-currency-fix-for-woocommerce' ),
+				esc_html__( 'Plugin Activation Error', 'phoenix-german-market-dhl-multi-currency-fix-for-woocommerce' ),
 				array( 'back_link' => true )
 			);
 		}
+
+		self::migrate_legacy_settings();
 
 		if ( ! get_option( Settings::OPTION_KEY ) ) {
 			add_option( Settings::OPTION_KEY, Settings::defaults() );
@@ -68,7 +72,7 @@ final class Install {
 			return false;
 		}
 
-		if ( ! phoenix_wp_bridge_gm_wcml_is_woocommerce_active() ) {
+		if ( ! phoenix_gm_dhl_mc_fix_is_woocommerce_active() ) {
 			return false;
 		}
 
@@ -79,6 +83,23 @@ final class Install {
 	 * Whether runtime integrations can load (soft deps for admin notice only).
 	 */
 	public static function integrations_available(): bool {
-		return phoenix_wp_bridge_gm_wcml_is_german_market_active() && phoenix_wp_bridge_gm_wcml_is_wcml_active();
+		return phoenix_gm_dhl_mc_fix_is_german_market_active() && phoenix_gm_dhl_mc_fix_is_wcml_active();
+	}
+
+	/**
+	 * Copies settings from the pre-review option key when present.
+	 */
+	private static function migrate_legacy_settings(): void {
+		$legacy = get_option( self::LEGACY_OPTION_KEY, null );
+
+		if ( null === $legacy || false === $legacy ) {
+			return;
+		}
+
+		if ( false === get_option( Settings::OPTION_KEY, false ) ) {
+			update_option( Settings::OPTION_KEY, $legacy );
+		}
+
+		delete_option( self::LEGACY_OPTION_KEY );
 	}
 }

@@ -2,14 +2,14 @@
 /**
  * Compares cart totals with WCML-converted DHL thresholds.
  *
- * @package PhoenixWP\BridgeGermanMarketWcml
+ * @package PhoenixWP\GmDhlMcFix
  */
 
 declare(strict_types=1);
 
-namespace PhoenixWP\BridgeGermanMarketWcml\Shipping;
+namespace PhoenixWP\GmDhlMcFix\Shipping;
 
-use PhoenixWP\BridgeGermanMarketWcml\Currency\Wcml_Converter;
+use PhoenixWP\GmDhlMcFix\Currency\Multicurrency_Price_Converter;
 
 defined( 'ABSPATH' ) || exit;
 
@@ -62,7 +62,7 @@ final class Threshold_Comparator {
 	 * @param float $threshold_eur Threshold in shop base currency.
 	 */
 	public static function threshold_in_active_currency( float $threshold_eur ): float {
-		return Wcml_Converter::to_active_currency( $threshold_eur );
+		return Multicurrency_Price_Converter::to_active_currency( $threshold_eur );
 	}
 
 	/**

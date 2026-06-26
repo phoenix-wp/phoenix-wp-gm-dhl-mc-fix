@@ -1,13 +1,13 @@
 # Translations
 
-**Shipped language:** English only (source strings in PHP).
+**Default UI:** English (source strings in PHP).
 
-This plugin is **Loco Translate ready**:
+**Shipped:** **German (de_DE)** — admin settings, menus, and notices (`*-de_DE.po` + `*-de_DE.l10n.php`). Primary market: DACH (German Market + WCML shops).
 
-- Text domain: `phoenix-german-market-dhl-wcml-fix-for-woocommerce`
-- Bundle: `loco.xml` in the plugin root
-- Save custom translations here as `{locale}.po` / `{locale}.mo`
+**Also supported:**
 
-No language files are bundled in the official release. After wp.org listing, community packs may appear via [GlotPress](https://translate.wordpress.org).
+- Text domain: `phoenix-german-market-dhl-multi-currency-fix-for-woocommerce`
+- Bundle: `loco.xml` in the plugin root — custom overrides via Loco Translate
+- After wp.org listing: community packs via [GlotPress](https://translate.wordpress.org) (e.g. de_AT, de_CH)
 
-Do not commit Freemius or third-party language folders here.
+Do not commit third-party or Freemius language folders here.

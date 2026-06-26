@@ -6,7 +6,7 @@
 
  *
 
- * @package PhoenixWP\BridgeGermanMarketWcml
+ * @package PhoenixWP\GmDhlMcFix
 
  */
 
@@ -16,11 +16,11 @@ declare(strict_types=1);
 
 
 
-namespace PhoenixWP\BridgeGermanMarketWcml\Shipping;
+namespace PhoenixWP\GmDhlMcFix\Shipping;
 
 
 
-use PhoenixWP\BridgeGermanMarketWcml\Currency\Wcml_Converter;
+use PhoenixWP\GmDhlMcFix\Currency\Multicurrency_Price_Converter;
 
 
 
@@ -154,7 +154,7 @@ final class Shipping_Cost_Converter {
 
 	private static function should_convert(): bool {
 
-		return Wcml_Converter::client_currency() !== strtoupper( phoenix_wp_bridge_gm_wcml_base_currency() );
+		return Multicurrency_Price_Converter::client_currency() !== strtoupper( phoenix_gm_dhl_mc_fix_base_currency() );
 
 	}
 

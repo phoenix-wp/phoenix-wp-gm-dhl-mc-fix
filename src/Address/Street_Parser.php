@@ -2,12 +2,12 @@
 /**
  * Bidirectional street / house number parsing (P1 stub).
  *
- * @package PhoenixWP\BridgeGermanMarketWcml
+ * @package PhoenixWP\GmDhlMcFix
  */
 
 declare(strict_types=1);
 
-namespace PhoenixWP\BridgeGermanMarketWcml\Address;
+namespace PhoenixWP\GmDhlMcFix\Address;
 
 defined( 'ABSPATH' ) || exit;
 

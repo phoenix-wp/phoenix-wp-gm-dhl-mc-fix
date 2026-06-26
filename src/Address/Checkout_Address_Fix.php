@@ -2,15 +2,15 @@
 /**
  * Checkout address normalization for DHL (P1 stub).
  *
- * @package PhoenixWP\BridgeGermanMarketWcml
+ * @package PhoenixWP\GmDhlMcFix
  */
 
 declare(strict_types=1);
 
-namespace PhoenixWP\BridgeGermanMarketWcml\Address;
+namespace PhoenixWP\GmDhlMcFix\Address;
 
-use PhoenixWP\BridgeGermanMarketWcml\Settings;
-use PhoenixWP\BridgeGermanMarketWcml\Shipping\Dhl_Method_Registry;
+use PhoenixWP\GmDhlMcFix\Settings;
+use PhoenixWP\GmDhlMcFix\Shipping\Dhl_Method_Registry;
 
 defined( 'ABSPATH' ) || exit;
 

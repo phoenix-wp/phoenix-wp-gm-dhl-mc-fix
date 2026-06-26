@@ -2,15 +2,15 @@
 /**
  * Boots German Market DHL integrations.
  *
- * @package PhoenixWP\BridgeGermanMarketWcml
+ * @package PhoenixWP\GmDhlMcFix
  */
 
 declare(strict_types=1);
 
-namespace PhoenixWP\BridgeGermanMarketWcml\Integration;
+namespace PhoenixWP\GmDhlMcFix\Integration;
 
-use PhoenixWP\BridgeGermanMarketWcml\Address\Checkout_Address_Fix;
-use PhoenixWP\BridgeGermanMarketWcml\Shipping\Shipping_Rate_Filters;
+use PhoenixWP\GmDhlMcFix\Address\Checkout_Address_Fix;
+use PhoenixWP\GmDhlMcFix\Shipping\Shipping_Rate_Filters;
 
 defined( 'ABSPATH' ) || exit;
 
@@ -37,13 +37,13 @@ final class German_Market_Dhl {
 	public function init(): void {
 		Checkout_Address_Fix::instance()->init();
 
-		if ( phoenix_wp_bridge_gm_wcml_is_wcml_active() ) {
+		if ( phoenix_gm_dhl_mc_fix_is_wcml_active() ) {
 			Shipping_Rate_Filters::instance()->init();
 		}
 
 		/**
 		 * Fires when GM DHL bridge integrations are registered.
 		 */
-		do_action( 'phoenix_wp_bridge_gm_wcml_integrations_loaded' );
+		do_action( 'phoenix_gm_dhl_mc_fix_integrations_loaded' );
 	}
 }

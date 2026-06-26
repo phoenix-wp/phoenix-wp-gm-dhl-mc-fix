@@ -1,5 +1,5 @@
 {
-	"name": "phoenixwp/bridge-german-market-wcml",
+	"name": "phoenixwp/gm-dhl-mc-fix",
 	"description": "WCML currency thresholds and address parsing for German Market DHL shipping.",
 	"type": "wordpress-plugin",
 	"license": "GPL-2.0-or-later",
@@ -8,7 +8,7 @@
 	},
 	"autoload": {
 		"psr-4": {
-			"PhoenixWP\\BridgeGermanMarketWcml\\": "src/"
+			"PhoenixWP\\GmDhlMcFix\\": "src/"
 		},
 		"files": [
 			"src/functions.php"

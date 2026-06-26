@@ -36,7 +36,7 @@ Requires German Market (DHL add-on) and WCML — **not included**.
 ## Development
 
 ```powershell
-cd phoenix-german-market-dhl-wcml-fix-for-woocommerce
+cd phoenix-wp-gm-dhl-mc-fix
 composer install   # optional; includes/autoload-fallback.php works without vendor/
 .\scripts\build-release.ps1              # wp.org / GitHub (mit docs/)
 .\scripts\build-release.ps1 -Deploy      # Live-Shop — ohne docs/
@@ -46,14 +46,14 @@ composer install   # optional; includes/autoload-fallback.php works without vend
 
 | Item | Value |
 |------|--------|
-| Suggested SVN slug | `phoenix-german-market-dhl-wcml-fix-for-woocommerce` |
+| Suggested SVN slug | `phoenix-german-market-dhl-multi-currency-fix-for-woocommerce` |
 | Display name | PhoenixWP Fix — German Market DHL & WCML |
 | Assets | `wp-org-assets/` → SVN `assets/` only |
 | Checklist | `docs/WP-ORG-SUBMISSION.md` |
 
 ## Spec
 
-`phoenix-wp-core/docs/plugins/PHOENIX-WP-BRIDGE-GERMAN-MARKET-WCML.md`
+`phoenix-wp-core/docs/plugins/PHOENIX-WP-GM-DHL-MC-FIX.md`
 
 ## License
 

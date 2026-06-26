@@ -6,7 +6,7 @@
 
  *
 
- * @package PhoenixWP\BridgeGermanMarketWcml
+ * @package PhoenixWP\GmDhlMcFix
 
  */
 
@@ -16,11 +16,11 @@ declare(strict_types=1);
 
 
 
-namespace PhoenixWP\BridgeGermanMarketWcml\Shipping;
+namespace PhoenixWP\GmDhlMcFix\Shipping;
 
 
 
-use PhoenixWP\BridgeGermanMarketWcml\Settings;
+use PhoenixWP\GmDhlMcFix\Settings;
 
 
 

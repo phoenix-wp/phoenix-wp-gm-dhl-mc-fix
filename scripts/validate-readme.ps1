@@ -27,7 +27,7 @@ foreach ($field in @('Contributors:', 'Requires at least:', 'Tested up to:', 'Re
 
 if ($headerBlock -match 'Stable tag:\s*([0-9.]+)') {
 	$stableTag = $Matches[1]
-	$mainFile = Join-Path $root 'phoenix-german-market-dhl-wcml-fix-for-woocommerce.php'
+	$mainFile = Join-Path $root 'phoenix-german-market-dhl-multi-currency-fix-for-woocommerce.php'
 	$mainContent = Get-Content $mainFile -Raw
 	if ($mainContent -notmatch "Version:\s*$stableTag") {
 		$errors += "Stable tag ($stableTag) does not match plugin header Version."
@@ -52,8 +52,12 @@ foreach ($section in $requiredSections) {
 	}
 }
 
-if ($readme -match '== Upgrade Notice ==') {
-	$warnings += 'Upgrade Notice section present (optional for first release).'
+if ($headerBlock -notmatch 'WC tested up to:') {
+	$warnings += 'Missing WC tested up to: (recommended for WooCommerce plugins).'
+}
+
+if ($readme -match 'docs/DESCRIPTION') {
+	$warnings += 'readme references docs/DESCRIPTION-*.md — those files are excluded from the wp.org ZIP; link to phoenixwp.com/support only.'
 }
 
 if ($readme.Length -gt 150000) {

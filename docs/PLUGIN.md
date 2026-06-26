@@ -1,7 +1,7 @@
 # PhoenixWP Fix — German Market DHL & WCML — Technical Reference
 
 > **Display name:** PhoenixWP Fix — German Market DHL & WCML  
-> Kanonische Spec: `phoenix-wp-core/docs/plugins/PHOENIX-WP-BRIDGE-GERMAN-MARKET-WCML.md`
+> Kanonische Spec: `phoenix-wp-core/docs/plugins/PHOENIX-WP-GM-DHL-MC-FIX.md`
 
 ## Architecture
 
@@ -13,7 +13,7 @@ src/
     Threshold_Comparator.php          — cart vs EUR threshold (WCML)
     Shipping_Cost_Converter.php         — WCML conversion for DHL rate costs
     Shipping_Rate_Filters.php         — GM DHL filter hooks
-  Currency/Wcml_Converter.php         — wcml_convert_price wrapper
+  Currency/Multicurrency_Price_Converter.php — WCML price conversion wrapper
   Address/
     Street_Parser.php                 — bidirectional street/house no.
     Checkout_Address_Fix.php          — normalize before GM validation
@@ -34,8 +34,8 @@ src/
 
 ## Extension hooks
 
-- `phoenix_wp_bridge_gm_wcml_loaded`
-- `phoenix_wp_bridge_gm_wcml_integrations_loaded`
+- `phoenix_gm_dhl_mc_fix_loaded`
+- `phoenix_gm_dhl_mc_fix_integrations_loaded`
 
 ## Version 1.0.0
 

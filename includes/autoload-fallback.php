@@ -2,7 +2,7 @@
 /**
  * PSR-4 fallback autoloader when Composer vendor/ is not present.
  *
- * @package PhoenixWP\BridgeGermanMarketWcml
+ * @package PhoenixWP\GmDhlMcFix
  */
 
 defined( 'ABSPATH' ) || exit;
@@ -10,17 +10,17 @@ defined( 'ABSPATH' ) || exit;
 /**
  * Registers the extension PSR-4 autoloader.
  */
-function phoenix_wp_bridge_gm_wcml_register_autoload_fallback(): void {
+function phoenix_gm_dhl_mc_fix_register_autoload_fallback(): void {
 	spl_autoload_register(
 		static function ( string $class ): void {
-			$prefix = 'PhoenixWP\\BridgeGermanMarketWcml\\';
+			$prefix = 'PhoenixWP\\GmDhlMcFix\\';
 
 			if ( ! str_starts_with( $class, $prefix ) ) {
 				return;
 			}
 
 			$relative = substr( $class, strlen( $prefix ) );
-			$file     = PHOENIX_GERMAN_MARKET_DHL_WCML_FIX_FOR_WOOCOMMERCE_PATH . 'src/' . str_replace( '\\', '/', $relative ) . '.php';
+			$file     = PHOENIX_GM_DHL_MC_FIX_PATH . 'src/' . str_replace( '\\', '/', $relative ) . '.php';
 
 			if ( is_readable( $file ) ) {
 				require_once $file;
@@ -28,5 +28,5 @@ function phoenix_wp_bridge_gm_wcml_register_autoload_fallback(): void {
 		}
 	);
 
-	require_once PHOENIX_GERMAN_MARKET_DHL_WCML_FIX_FOR_WOOCOMMERCE_PATH . 'src/functions.php';
+	require_once PHOENIX_GM_DHL_MC_FIX_PATH . 'src/functions.php';
 }

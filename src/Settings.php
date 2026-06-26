@@ -2,12 +2,12 @@
 /**
  * Plugin settings option.
  *
- * @package PhoenixWP\BridgeGermanMarketWcml
+ * @package PhoenixWP\GmDhlMcFix
  */
 
 declare(strict_types=1);
 
-namespace PhoenixWP\BridgeGermanMarketWcml;
+namespace PhoenixWP\GmDhlMcFix;
 
 defined( 'ABSPATH' ) || exit;
 
@@ -16,7 +16,7 @@ defined( 'ABSPATH' ) || exit;
  */
 final class Settings {
 
-	public const OPTION_KEY = 'phoenix_wp_bridge_gm_wcml_settings';
+	public const OPTION_KEY = 'phoenix_gm_dhl_mc_fix_settings';
 
 	/**
 	 * Default settings.
@@ -25,9 +25,9 @@ final class Settings {
 	 */
 	public static function defaults(): array {
 		return array(
-			'convert_dhl_thresholds'   => true,
+			'convert_dhl_thresholds'     => true,
 			'convert_dhl_shipping_costs' => true,
-			'fix_address_parsing'      => true,
+			'fix_address_parsing'        => true,
 		);
 	}
 
@@ -37,6 +37,13 @@ final class Settings {
 	 * @return array<string, bool>
 	 */
 	public static function get(): array {
+		$legacy = get_option( 'phoenix_wp_bridge_gm_wcml_settings', null );
+
+		if ( is_array( $legacy ) && false === get_option( self::OPTION_KEY, false ) ) {
+			update_option( self::OPTION_KEY, $legacy );
+			delete_option( 'phoenix_wp_bridge_gm_wcml_settings' );
+		}
+
 		$stored = get_option( self::OPTION_KEY, array() );
 
 		if ( ! is_array( $stored ) ) {

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <bundle>
-	<domain name="phoenix-german-market-dhl-wcml-fix-for-woocommerce">
+	<domain name="phoenix-german-market-dhl-multi-currency-fix-for-woocommerce">
 		<project name="PhoenixWP Fix — German Market DHL &amp; WCML">
 			<source>
 				<directory>.</directory>
