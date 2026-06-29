@@ -56,5 +56,12 @@ if (-not (Get-Command gh -ErrorAction SilentlyContinue)) {
 	throw 'GitHub CLI (gh) not found.'
 }
 
-gh release upload $Version $zipPath --repo "phoenix-wp/$pluginSlug" --clobber
-Write-Host "GitHub release asset updated: https://github.com/phoenix-wp/$pluginSlug/releases/tag/$Version"
+$ghRepo = 'phoenix-wp/phoenix-wp-gm-dhl-mc-fix'
+
+gh release view $Version --repo $ghRepo 2>$null
+if ($LASTEXITCODE -ne 0) {
+	throw "GitHub release tag $Version does not exist. Create it first: gh release create $Version"
+}
+
+gh release upload $Version $zipPath --repo $ghRepo --clobber
+Write-Host "GitHub release asset updated: https://github.com/phoenix-wp/phoenix-wp-gm-dhl-mc-fix/releases/tag/$Version"
